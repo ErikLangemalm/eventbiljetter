@@ -2,6 +2,50 @@
   {
     "id": 1,
     "username": "erik",
-    "pswrd": "12345"
+    "password": "12345",
+    "role": "k",
+    "tickets": []
+  },
+  {
+    "id": 2,
+    "username": "mange",
+    "password": "mange",
+    "role": "k",
+    "tickets": [
+      {
+        "id": 1,
+        "name": "Konsert",
+        "price": 50,
+        "time": "2023-12-31T20:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "username": "per",
+    "password": "moberg",
+    "role": "a",
+    "tickets": []
+  },
+  {
+    "id": 4,
+    "username": "1",
+    "password": "1",
+    "role": "a",
+    "tickets": []
+  },
+  {
+    "id": 5,
+    "username": "asdf",
+    "password": "asdf",
+    "role": "h",
+    "tickets": []
+  },
+  {
+    "id": 6,
+    "username": "asdf",
+    "password": "asdf",
+    "role": "2",
+    "tickets": []
   }
 ]
