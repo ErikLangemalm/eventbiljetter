@@ -32,20 +32,29 @@ class User {
     });
   }
 }
-/*
+
 function loadFromJson(filePath) {
   const data = fs.readFileSync(filePath, 'utf8');
-  return JSON.parse(data);
+  dataContent = JSON.parse(data);
+  return dataContent;
 
+}
+
+function saveToJson(data, filePath) {
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
 }
 
 let events = loadFromJson('data.json');
 let users = loadFromJson('users.json');
-*/
+
 function createAccount() {
   const userName = prompt("Användarnamn: ");
   const pswrd = prompt("Lösenord: ", { hideEchoBack: true });
-  const type = prompt("Är du säljare eller köpare? svara med 's' för säljare och 'k' för köpare");
+  const role = prompt("Är du administratör eller köpare? svara med 'a' för administratör och 'k' för köpare");
+  const user = new User(users.length + 1, userName, pswrd, role)
+  console.log("Ditt Konto har skapats");
+
+  users.push(user);
 }
 
 function main() {
