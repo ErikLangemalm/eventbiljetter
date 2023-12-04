@@ -40,12 +40,12 @@ class User {
 function createAccount() {
   const userName = prompt("Användarnamn: ");
   const password = prompt("Lösenord: ", { hideEchoBack: true });
-  const role = prompt("Är du administratör eller köpare? svara med 'a' för administratör och 'k' för köpare").toLowerCase();
+  const role = prompt("Är du administratör eller köpare? svara med 'a' för administratör och 'k' för köpare ").toLowerCase();
   if (role != "a" || role != "k") {
     b = true;
     while (b) {
       console.log("Du har matat in en felaktig roll");
-      const role = prompt("Är du administratör eller köpare? svara med 'a' för administratör och 'k' för köpare").toLowerCase();
+      const role = prompt("Är du administratör eller köpare? svara med 'a' för administratör och 'k' för köpare ").toLowerCase();
       if (role == "a" || role == "k") {
         b = false;
       }
@@ -129,8 +129,8 @@ function main() {
       case 4:
         if (loggedIn && currentUser.role === "k") {
           const eventName = prompt("vad heter eventet du vil lägga till? ");
-          const eventPrice = parseInt(prompt("Ange biljett kostnad"));
-          const eventTime = prompt("Tiden eventet sker");
+          const eventPrice = parseInt(prompt("Ange biljett kostnad "));
+          const eventTime = prompt("Tiden eventet sker ");
 
           const newEvent = new EventTicket(data.length + 1, eventName, eventPrice, eventTime)
           data.push(newEvent);
@@ -163,7 +163,7 @@ function main() {
             fs.writeFileSync('data.json', JSON.stringify(data, null, 2), 'utf8');
             fs.writeFileSync('users.json', JSON.stringify(users, null, 2), 'utf8');
           } else {
-            console.log("Eventet kunde inte hittas. Vänligen se över Id nummret du har anget.");
+            console.log("Eventet kunde inte hittas. Vänligen se över Id nummret du har anget. ");
           }
         }
         break;
