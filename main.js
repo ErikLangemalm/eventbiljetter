@@ -82,12 +82,12 @@ function main() {
   let bo = true;
 
   while (bo) {
-    if (!loggedIn) {
-      console.log("Vad vill du göra?");
-      console.log("1: skapa konto");
-      console.log("2: logga in");
-      console.log("3: avsluta");
-    }
+
+    console.log("Vad vill du göra?");
+    console.log("1: skapa konto");
+    console.log("2: logga in");
+    console.log("3: avsluta");
+
     let choice
     try {
       choice = parseInt(prompt());
@@ -130,21 +130,10 @@ function main() {
         if (loggedIn && currentUser.role === "k") {
           const eventName = prompt("vad heter eventet du vil lägga till? ");
           const eventPrice = parseInt(prompt("Ange biljett kostnad"));
-          if (Number.isInteger(eventPrice)) {
-            b = true;
-            while (b) {
-              console.log("Du har matat in en felaktig roll");
-              const eventPrice = parseInt(prompt("Ange biljett kostnad"));
-              if (Number.isInteger(eventPrice)) {
-                b = false;
-              }
-            }
-          }
-          const eventTime = Date(prompt("Tiden eventet sker"));
+          const eventTime = prompt("Tiden eventet sker");
 
           const newEvent = new EventTicket(data.length + 1, eventName, eventPrice, eventTime)
-          currentUser.
-            data.push(newEvent);
+          data.push(newEvent);
           fs.writeFileSync('data.json', JSON.stringify(data, null, 2), 'utf8');
         }
         else if (loggedIn) {
@@ -164,9 +153,9 @@ function main() {
       case 6:
         if (loggedIn && currentUser.role === "k") {
           data.forEach(event => {
-            console.log(`ID: ${event.id}, Event: ${event.name}, Price: ${event.price}, Time: ${event.time}\n`)
+            console.log(`ID: ${event.id}, Event: ${event.name}, Pris: ${event.price}, Tid: ${event.time}\n`)
           });
-          const eventId = parseInt(prompt("Enter the ID of the event you want to buy a ticket for: "));
+          const eventId = parseInt(prompt("Skriv IDt på eventet som du vill köpa biljetter för: "));
           const selectedEvent = data.find(event => event.id === eventId);
 
           if (selectedEvent) {

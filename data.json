@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Konsert",
     "price": 50,
-    "time": "2023-12-31T20:00:00Z"
+    "time": "Mon Dec 04 2023 21:30:53 GMT+0100 (Central European Standard Time)"
   },
   {
     "id": 2,
@@ -21,6 +21,12 @@
     "id": 4,
     "name": "e",
     "price": 3,
-    "time": "Mon Dec 04 2023 21:30:53 GMT+0100 (Central European Standard Time)"
+    "time": "Mon Dec 04 2023 22:14:37 GMT+0100 (Central European Standard Time)"
+  },
+  {
+    "id": 5,
+    "name": "asdf",
+    "price": 50,
+    "time": "Mon Dec 04 2023 22:38:02 GMT+0100 (Central European Standard Time)"
   }
 ]
