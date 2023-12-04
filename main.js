@@ -26,15 +26,13 @@ class User {
   }
 
   buyTicket(event) {
-    console.log(`Tickets before buying: ${this.tickets.length}`);
     this.tickets.push(event);
-    console.log(`Tickets after buying: ${this.tickets.length}`);
   }
 
   viewTickets() {
-    console.log(`Tickets bought by user "${this.username}":`);
+    console.log(`Biljetter köpta av användare "${this.username}":`);
     this.tickets.forEach(event => {
-      console.log(`Event: ${event.name}, Price: ${event.price}, Time: ${event.time}`);
+      console.log(`Event: ${event.name}, Pris: ${event.price}, Tid: ${event.time}`);
     });
   }
 }
@@ -84,12 +82,12 @@ function main() {
   let bo = true;
 
   while (bo) {
-
-    console.log("Vad vill du göra?");
-    console.log("1: skapa konto");
-    console.log("2: logga in");
-    console.log("3: avsluta");
-
+    if (!loggedIn) {
+      console.log("Vad vill du göra?");
+      console.log("1: skapa konto");
+      console.log("2: logga in");
+      console.log("3: avsluta");
+    }
     let choice
     try {
       choice = parseInt(prompt());
@@ -176,10 +174,8 @@ function main() {
             fs.writeFileSync('data.json', JSON.stringify(data, null, 2), 'utf8');
             fs.writeFileSync('users.json', JSON.stringify(users, null, 2), 'utf8');
           } else {
-            console.log("Event not found.");
+            console.log("Eventet kunde inte hittas. Vänligen se över Id nummret du har anget.");
           }
-        } else {
-          console.log("Only buyers can purchase tickets. You are not a buyer.");
         }
         break;
       default:
