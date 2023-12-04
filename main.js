@@ -95,12 +95,22 @@ function main() {
       case 2:
         let currentUser = logIn()
         if (currentUser) {
-          console.log("4: ")
+          console.log("4: lägg till biljetter");
+          console.log("5: se mina biljetter");
+        }
+        else {
+          console.log("4: se användare som har köpt biljetter");
         }
         break;
       case 3:
         bo = false;
-        fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
+        fs.writeFileSync('data.json', JSON.stringify(data, null, 2), 'utf8');
+        fs.writeFileSync('users.json', JSON.stringify(users, null, 2), 'utf8');
+        break;
+      case 4:
+
+        break;
+      case 5:
         break;
       default:
         break;
