@@ -1,6 +1,9 @@
 const fs = require('fs');
 const prompt = require('prompt-sync')();
-
+const data1 = fs.readFileSync('data.json');
+const data = JSON.parse(data1);
+const users1 = fs.readFileSync('users.json');
+const users = JSON.parse(users1);
 
 class EventTicket {
   constructor(id, name, price, time) {
@@ -34,7 +37,6 @@ class User {
 }
 
 function loadFromJson(filePath) {
-  const data = fs.readFileSync(filePath, 'utf8');
   dataContent = JSON.parse(data);
   return dataContent;
 
@@ -44,8 +46,8 @@ function saveToJson(data, filePath) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
 }
 
-let events = loadFromJson('data.json');
-let users = loadFromJson('users.json');
+
+
 
 function createAccount() {
   const userName = prompt("Användarnamn: ");
@@ -55,6 +57,20 @@ function createAccount() {
   console.log("Ditt Konto har skapats");
 
   users.push(user);
+}
+
+function logIn() {
+  const username = prompt('Användarnamn: ');
+  const pswrd = prompt('Lösenord: ');
+
+  const user = users.find(u => u.username === username && u.pswrd === pswrd);
+
+  if (!user) {
+    console.log('Användaren hittades inte. Vänligen försök igen.');
+    return null;
+  } else {
+    return user;
+  }
 }
 
 function main() {
@@ -77,9 +93,14 @@ function main() {
         createAccount();
         break;
       case 2:
+        let currentUser = logIn()
+        if (currentUser) {
+          console.log("4: ")
+        }
         break;
       case 3:
         bo = false;
+        fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
         break;
       default:
         break;
