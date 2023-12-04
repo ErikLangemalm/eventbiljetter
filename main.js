@@ -23,6 +23,18 @@ class User {
     this.tickets = [];
   }
 
+  get username() {
+    return this.username;
+  }
+
+  get password() {
+    return this.password;
+  }
+
+  get role() {
+    return this.role;
+  }
+
   buyTicket(event) {
     this.tickets.push(event);
     console.log(`Ticket bought for event "${event.name}" by user "${this.username}".`);
@@ -46,14 +58,11 @@ function saveToJson(data, filePath) {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
 }
 
-
-
-
 function createAccount() {
   const userName = prompt("Användarnamn: ");
-  const pswrd = prompt("Lösenord: ", { hideEchoBack: true });
+  const password = prompt("Lösenord: ", { hideEchoBack: true });
   const role = prompt("Är du administratör eller köpare? svara med 'a' för administratör och 'k' för köpare");
-  const user = new User(users.length + 1, userName, pswrd, role)
+  const user = new User(users.length + 1, userName, password, role)
   console.log("Ditt Konto har skapats");
 
   users.push(user);
@@ -61,9 +70,9 @@ function createAccount() {
 
 function logIn() {
   const username = prompt('Användarnamn: ');
-  const pswrd = prompt('Lösenord: ');
+  const password = prompt('Lösenord: ');
 
-  const user = users.find(u => u.username === username && u.pswrd === pswrd);
+  const user = users.find(u => u.username === username && u.password === password);
 
   if (!user) {
     console.log('Användaren hittades inte. Vänligen försök igen.');
@@ -108,7 +117,11 @@ function main() {
         fs.writeFileSync('users.json', JSON.stringify(users, null, 2), 'utf8');
         break;
       case 4:
+        if (currentUser.role === "k") {
+          const eventName = prompt("vad heter eventet du vil lägga till? ");
+          const eventPrice = parseInt(prompt("Hur mycket ska en biljett kosta?"));
 
+        }
         break;
       case 5:
         break;
